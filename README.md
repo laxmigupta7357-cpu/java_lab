@@ -1,4 +1,7 @@
+[program-1 WAP for HelloWorld](#code1)
+[program-2 WAP for library management](#code2)
 
+## code-1
 ```
 class HelloWorld {
     public static void main(String[] args) {
@@ -8,7 +11,7 @@ class HelloWorld {
 ```
 <img width="83" height="11" alt="image" src="https://github.com/user-attachments/assets/e3744f25-d79a-4320-87dc-bfbb168aef25" />
 
-
+## code-2
 ```
 class Book {
 
