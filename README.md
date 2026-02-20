@@ -31,8 +31,7 @@ System.out.println("Division: "+(a/b));
 }
 }
 '''
-<img width="126" height="74" alt="image" src="https://github.com/user-attachments/assets/078f822e-de5b-4ff6-a88d-1b6eda9c5176" />
-
+<img width="126" height="74" alt="image" src="https://github.com/user-attachments/assets/31cacc82-2cb6-4f71-b362-722563d9ffc2" />
 
 
 
@@ -49,39 +48,33 @@ class HelloWorld {
 ```
 class Book {
 
-    // Instance variables
     String title;
     String author;
     String isbn;
 
-    // Static variable
     static int totalBooks = 0;
 
-    // Constructor
     Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
-        totalBooks++;   // Increase count when book object is created
+        totalBooks++;  
     }
 
-    // Instance method
+
     void borrowBook() {
         System.out.println(title + " has been borrowed.");
     }
 
-    // Instance method
     void returnBook() {
         System.out.println(title + " has been returned.");
     }
 
-    // Static method
     static int getTotalBooks() {
         return totalBooks;
     }
 }
 
-// Test Class
 public class LibraryTest {
     public static void main(String[] args) {
 
