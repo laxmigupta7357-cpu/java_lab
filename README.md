@@ -1,6 +1,7 @@
 [program-1 WAP for HelloWorld](#code1)
 [program-2 WAP for library management](#code2)
 [program-3 WAP for printing right triangle pattern](#code3)
+[program-4 WAP for check the number is armstrong or not](#code4)
 
 ## code-1
 ```
@@ -83,3 +84,35 @@ class Pattern2
 ```
 <img width="56" height="62" alt="image" src="https://github.com/user-attachments/assets/4a8a0a9f-5ac9-47c2-8e73-5368d5caeeed" />
 
+## code-4
+```
+class Armstrong
+{
+    int num = 153;
+
+    void check()
+    {
+        int temp = num;
+        int sum = 0, rem;
+
+        while(num > 0)
+        {
+            rem = num % 10;
+            sum = sum + (rem * rem * rem);
+            num = num / 10;
+        }
+
+        if(temp == sum)
+            System.out.println("Number is Armstrong");
+        else
+            System.out.println("Number is not Armstrong");
+    }
+
+    public static void main(String[] args)
+    {
+        Armstrong a = new Armstrong();
+        a.check();
+    }
+}
+```
+<img width="114" height="16" alt="image" src="https://github.com/user-attachments/assets/aac26a24-368e-4f15-aec5-ff51f9ae7bf8" />
