@@ -57,7 +57,8 @@ public class LibraryTest {
 }
 ```
 <img width="170" height="38" alt="image" src="https://github.com/user-attachments/assets/a1c19397-55a7-4f00-b8e4-24b854cf9e85" />
-## code-1
+
+## code-3
 ```
 class Pattern2
 {
