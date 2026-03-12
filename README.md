@@ -5,6 +5,9 @@
 [program-5 WAP for check the number is palindrome or not](#code5)
 [program-6 WAP to print fibonacci series](#code6)
 [program-7 WAP to print factorial of a number](#code7)
+[program-8 WAP to perform Matrix operations on 3*3 matrix](#code8)
+[program-9 WAP for addition of two times where each time each give in hr,min, sec ](#code9)
+[program-10 WAP for addition of two times where each time each give in hr,min](#code10)
 ## code-1
 ```
 class HelloWorld {
@@ -210,3 +213,196 @@ class Factorial
 
 <img width="122" height="11" alt="image" src="https://github.com/user-attachments/assets/414faab4-07b7-49a2-b3ea-23ca29c0df9c" />
 
+## code-8
+```
+class MatrixOperations
+{
+    int a[][] = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+
+    int b[][] = {
+        {1,1,1},
+        {1,1,1},
+        {1,1,1}
+    };
+
+    void transpose()
+    {
+        System.out.println("Transpose of Matrix:");
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                System.out.print(a[j][i]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    void sumMatrix()
+    {
+        int sum=0;
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                sum=sum+a[i][j];
+            }
+        }
+        System.out.println("Sum of matrix elements = "+sum);
+    }
+
+    void multiply()
+    {
+        int c[][]=new int[3][3];
+
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                c[i][j]=0;
+                for(int k=0;k<3;k++)
+                {
+                    c[i][j]+=a[i][k]*b[k][j];
+                }
+            }
+        }
+
+        System.out.println("Multiplication of matrices:");
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                System.out.print(c[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    void rowSum()
+    {
+        System.out.println("Sum of rows:");
+        for(int i=0;i<3;i++)
+        {
+            int sum=0;
+            for(int j=0;j<3;j++)
+            {
+                sum=sum+a[i][j];
+            }
+            System.out.println("Row "+(i+1)+" = "+sum);
+        }
+    }
+
+    void columnSum()
+    {
+        System.out.println("Sum of columns:");
+        for(int j=0;j<3;j++)
+        {
+            int sum=0;
+            for(int i=0;i<3;i++)
+            {
+                sum=sum+a[i][j];
+            }
+            System.out.println("Column "+(j+1)+" = "+sum);
+        }
+    }
+
+    void diagonalSum()
+    {
+        int main=0, secondary=0;
+
+        for(int i=0;i<3;i++)
+        {
+            main+=a[i][i];
+            secondary+=a[i][2-i];
+        }
+
+        System.out.println("Main Diagonal Sum = "+main);
+        System.out.println("Secondary Diagonal Sum = "+secondary);
+    }
+
+    public static void main(String args[])
+    {
+        MatrixOperations m=new MatrixOperations();
+
+        m.transpose();
+        m.sumMatrix();
+        m.multiply();
+        m.rowSum();
+        m.columnSum();
+        m.diagonalSum();
+    }
+}
+```
+<img width="173" height="247" alt="image" src="https://github.com/user-attachments/assets/80e3b5fa-a730-40ab-9c4d-ba8ae36b819d" />
+
+## code-9
+```
+class Times
+{
+    int hr;
+    int min;
+    int sec;
+
+    void add()
+    {
+        int h1 = 2, m1 = 45, s1 = 50;
+        int h2 = 3, m2 = 20, s2 = 50;
+
+        hr = h1 + h2;
+        min = m1 + m2;
+        sec = s1 + s2;
+
+        // convert seconds to minutes
+        min = min + (sec / 60);
+        sec = sec % 60;
+
+        // convert minutes to hours
+        hr = hr + (min / 60);
+        min = min % 60;
+
+        System.out.println("Total Time = " + hr + " hr " + min + " min " + sec + " sec");
+    }
+
+    public static void main(String[] args)
+    {
+        Times t = new Times();
+        t.add();
+    }
+}
+```
+<img width="167" height="17" alt="image" src="https://github.com/user-attachments/assets/b328d9e6-e6fb-4d4f-893d-10311181a5f6" />
+
+## code-10
+```
+class Time
+{
+    int hr;
+    int min;
+
+    void add()
+    {
+        int h1 = 3, m1 = 45;
+        int h2 = 2, m2 = 30;
+
+        hr = h1 + h2;
+        min = m1 + m2;
+
+        // convert minutes to hours
+        hr = hr + (min / 60);
+        min = min % 60;
+
+        System.out.println("Total Time = " + hr + " hr " + min + " min");
+    }
+
+    public static void main(String[] args)
+    {
+        Time t = new Time();
+        t.add();
+    }
+}
+```
+<img width="139" height="19" alt="image" src="https://github.com/user-attachments/assets/973d6ae3-2d8d-40c3-b270-d7623e3d1243" />
