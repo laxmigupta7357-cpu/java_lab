@@ -209,3 +209,4 @@ class Factorial
 ```
 
 <img width="122" height="11" alt="image" src="https://github.com/user-attachments/assets/414faab4-07b7-49a2-b3ea-23ca29c0df9c" />
+
