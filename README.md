@@ -8,6 +8,10 @@
 [program-8 WAP to perform Matrix operations on 3*3 matrix](#code8)
 [program-9 WAP for addition of two times where each time each give in hr,min, sec ](#code9)
 [program-10 WAP for addition of two times where each time each give in hr,min](#code10)
+[program-11 WAP  for the addition of two distances where each distance is given in meter ,cm and mm ](#code11)
+[program-12 WAP  for the addition of two distances where each distance is given in meter ,cm ](#code12)
+[program-13 WAP for the addition ,subtraction ,multiplication ,division ](#code13)
+[program-14 WAP using objects and classes to do the reverse of 1D array](#code14)
 ## code-1
 ```
 class HelloWorld {
@@ -406,3 +410,141 @@ class Time
 }
 ```
 <img width="139" height="19" alt="image" src="https://github.com/user-attachments/assets/973d6ae3-2d8d-40c3-b270-d7623e3d1243" />
+
+## code-11
+```
+class Distance
+{
+    int meter;
+    int cm;
+    int mm;
+
+    void add()
+    {
+        int m1 = 2, c1 = 50, mm1 = 30;
+        int m2 = 3, c2 = 70, mm2 = 80;
+
+        meter = m1 + m2;
+        cm = c1 + c2;
+        mm = mm1 + mm2;
+
+        // convert mm to cm
+        cm = cm + (mm / 10);
+        mm = mm % 10;
+
+        // convert cm to meter
+        meter = meter + (cm / 100);
+        cm = cm % 100;
+
+        System.out.println("Total Distance = " + meter + " m " + cm + " cm " + mm + " mm");
+    }
+
+    public static void main(String[] args)
+    {
+        Distance d = new Distance();
+        d.add();
+    }
+}
+```
+<img width="181" height="18" alt="image" src="https://github.com/user-attachments/assets/95ebdf80-658b-4176-8cec-90af230ad7e8" />
+
+## code-12
+```
+class Distances
+{
+    int meter;
+    int cm;
+
+    void add()
+    {
+        int m1 = 4, c1 = 80;
+        int m2 = 3, c2 = 50;
+
+        meter = m1 + m2;
+        cm = c1 + c2;
+
+        // convert cm to meter
+        meter = meter + (cm / 100);
+        cm = cm % 100;
+
+        System.out.println("Total Distance = " + meter + " meter " + cm + " cm");
+    }
+
+    public static void main(String[] args)
+    {
+        Distances d = new Distances();
+        d.add();
+    }
+}
+```
+<img width="172" height="17" alt="image" src="https://github.com/user-attachments/assets/989c24cc-312f-49ba-8be3-66cafb869d4d" />
+
+## code-13
+```
+class Calculator
+{
+    int a = 10;
+    int b = 5;
+
+    void addition()
+    {
+        System.out.println("Addition = " + (a + b));
+    }
+
+    void subtraction()
+    {
+        System.out.println("Subtraction = " + (a - b));
+    }
+
+    void multiplication()
+    {
+        System.out.println("Multiplication = " + (a * b));
+    }
+
+    void division()
+    {
+        System.out.println("Division = " + (a / b));
+    }
+
+    public static void main(String[] args)
+    {
+        Calculator c = new Calculator();
+
+        c.addition();
+        c.subtraction();
+        c.multiplication();
+        c.division();
+    }
+}
+```
+<img width="146" height="53" alt="image" src="https://github.com/user-attachments/assets/04bda29b-714a-4238-88ae-1a87bbff38e9" />
+
+## code-14
+```
+class ReverseArray
+{
+    void reverse()
+    {
+        int arr[] = {10, 20, 30, 40, 50};
+
+        System.out.println("Original Array:");
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+
+        System.out.println("\nReversed Array:");
+        for(int i=arr.length-1;i>=0;i--)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+    public static void main(String args[])
+    {
+        ReverseArray r = new ReverseArray();
+        r.reverse();
+    }
+}
+```
+<img width="98" height="52" alt="image" src="https://github.com/user-attachments/assets/a89c15af-1055-4688-a0b2-198157b0d577" />
