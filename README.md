@@ -12,6 +12,9 @@
 [program-12 WAP  for the addition of two distances where each distance is given in meter ,cm ](#code12)
 [program-13 WAP for the addition ,subtraction ,multiplication ,division ](#code13)
 [program-14 WAP using objects and classes to do the reverse of 1D array](#code14)
+[program-15 WAP to demonstrate single Inheritance](#code15)
+[program-16 WAP to demonstrate multilevel Inheritance](#code16)
+[program-17 WAP to demonstrate hierarchical Inheritance](#code17)
 ## code-1
 ```
 class HelloWorld {
@@ -548,3 +551,115 @@ class ReverseArray
 }
 ```
 <img width="98" height="52" alt="image" src="https://github.com/user-attachments/assets/a89c15af-1055-4688-a0b2-198157b0d577" />
+
+## code-15
+```
+class A
+{
+    void show()
+    {
+        System.out.println("This is Parent class");
+    }
+}
+
+class B extends A
+{
+    void display()
+    {
+        System.out.println("This is Child class");
+    }
+}
+
+class SingleInheritance
+{
+    public static void main(String args[])
+    {
+        B obj = new B();
+        obj.show();
+        obj.display();
+    }
+}
+```
+<img width="125" height="27" alt="image" src="https://github.com/user-attachments/assets/3eca8dcc-6f55-496b-bf16-1ba3f37ef0be" />
+
+## code-16
+```
+class A
+{
+    void show()
+    {
+        System.out.println("Class A");
+    }
+}
+
+class B extends A
+{
+    void display()
+    {
+        System.out.println("Class B");
+    }
+}
+
+class C extends B
+{
+    void print()
+    {
+        System.out.println("Class C");
+    }
+}
+
+class MultilevelInheritance
+{
+    public static void main(String args[])
+    {
+        C obj = new C();
+        obj.show();
+        obj.display();
+        obj.print();
+    }
+}
+```
+<img width="67" height="44" alt="image" src="https://github.com/user-attachments/assets/faa0b166-19b6-40d9-842e-637f2d1ecabe" />
+
+## code-17
+```
+class A
+{
+    void show()
+    {
+        System.out.println("Parent class");
+    }
+}
+
+class B extends A
+{
+    void display()
+    {
+        System.out.println("Child class B");
+    }
+}
+
+class C extends A
+{
+    void print()
+    {
+        System.out.println("Child class C");
+    }
+}
+
+class HierarchicalInheritance
+{
+    public static void main(String args[])
+    {
+        B obj1 = new B();
+        C obj2 = new C();
+
+        obj1.show();
+        obj1.display();
+
+        obj2.show();
+        obj2.print();
+    }
+}
+```
+<img width="87" height="56" alt="image" src="https://github.com/user-attachments/assets/51620887-1d27-4ec8-b381-3f12bdbd9877" />
