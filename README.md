@@ -2,6 +2,7 @@
 [program-2 WAP for library management](#code2)
 [program-3 WAP for printing right triangle pattern](#code3)
 [program-4 WAP for check the number is armstrong or not](#code4)
+[program-5 WAP for check the number is palindrome or not](#code5)
 
 ## code-1
 ```
@@ -116,3 +117,37 @@ class Armstrong
 }
 ```
 <img width="114" height="16" alt="image" src="https://github.com/user-attachments/assets/aac26a24-368e-4f15-aec5-ff51f9ae7bf8" />
+
+## code-5
+```
+class Palindrome
+{
+    int num = 121;
+
+    void check()
+    {
+        int temp = num;
+        int rev = 0, rem;
+
+        while(num > 0)
+        {
+            rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+
+        if(temp == rev)
+            System.out.println("Number is Palindrome");
+        else
+            System.out.println("Number is not Palindrome");
+    }
+
+    public static void main(String[] args)
+    {
+        Palindrome p = new Palindrome();
+        p.check();
+    }
+}
+```
+
+<img width="116" height="13" alt="image" src="https://github.com/user-attachments/assets/0f9b9bef-a587-4bb6-b62e-9979252a91ba" />
