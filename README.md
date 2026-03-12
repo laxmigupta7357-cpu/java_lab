@@ -1,5 +1,6 @@
 [program-1 WAP for HelloWorld](#code1)
 [program-2 WAP for library management](#code2)
+[program-3 WAP for printing right triangle pattern](#code3)
 
 ## code-1
 ```
@@ -56,5 +57,28 @@ public class LibraryTest {
 }
 ```
 <img width="170" height="38" alt="image" src="https://github.com/user-attachments/assets/a1c19397-55a7-4f00-b8e4-24b854cf9e85" />
+## code-1
+```
+class Pattern2
+{
+    void printPattern()
+    {
+        for(int i=1;i<=5;i++)
+        {
+            for(int j=1;j<=i;j++)
+            {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
 
+    public static void main(String args[])
+    {
+        Pattern2 p = new Pattern2();
+        p.printPattern();
+    }
+}
+```
+<img width="56" height="62" alt="image" src="https://github.com/user-attachments/assets/4a8a0a9f-5ac9-47c2-8e73-5368d5caeeed" />
 
