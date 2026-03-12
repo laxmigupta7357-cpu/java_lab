@@ -3,7 +3,8 @@
 [program-3 WAP for printing right triangle pattern](#code3)
 [program-4 WAP for check the number is armstrong or not](#code4)
 [program-5 WAP for check the number is palindrome or not](#code5)
-
+[program-6 WAP to print fibonacci series](#code6)
+[program-7 WAP to print factorial of a number](#code7)
 ## code-1
 ```
 class HelloWorld {
@@ -151,3 +152,60 @@ class Palindrome
 ```
 
 <img width="116" height="13" alt="image" src="https://github.com/user-attachments/assets/0f9b9bef-a587-4bb6-b62e-9979252a91ba" />
+
+## code-6
+```
+class Fibonacci
+{
+    int n = 10;
+
+    void printSeries()
+    {
+        int a = 0, b = 1, c;
+
+        System.out.print("Fibonacci Series: " + a + " " + b);
+
+        for(int i = 2; i < n; i++)
+        {
+            c = a + b;
+            System.out.print(" " + c);
+            a = b;
+            b = c;
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        Fibonacci f = new Fibonacci();
+        f.printSeries();
+    }
+}
+```
+<img width="233" height="12" alt="image" src="https://github.com/user-attachments/assets/e5deaffc-617a-45d0-853b-21d31543d100" />
+
+## code-7
+```
+class Factorial
+{
+    int num = 5;
+    int fact = 1;
+
+    void calculate()
+    {
+        for(int i = 1; i <= num; i++)
+        {
+            fact = fact * i;
+        }
+
+        System.out.println("Factorial of " + num + " = " + fact);
+    }
+
+    public static void main(String[] args)
+    {
+        Factorial f = new Factorial();
+        f.calculate();
+    }
+}
+```
+
+<img width="122" height="11" alt="image" src="https://github.com/user-attachments/assets/414faab4-07b7-49a2-b3ea-23ca29c0df9c" />
