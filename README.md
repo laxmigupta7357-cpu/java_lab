@@ -15,6 +15,11 @@
 [program-15 WAP to demonstrate single Inheritance](#code15)
 [program-16 WAP to demonstrate multilevel Inheritance](#code16)
 [program-17 WAP to demonstrate hierarchical Inheritance](#code17)
+[program-18 WAP to write data into a file using FileWriter and read the same file using FileReader](#code18)
+[program-19 WAP to write data into a file using FileOutputStream and read the same file using FileInputStream](#code19)
+[program-20 WAP to copy the contents of one file (source.txt) to another file (dest.txt) using character stream classes (FileReader and FileWriter)](#code-20).
+[program-21 WAP to copy data from one file to another using byte stream classes (FileInputStream and FileOutputStream)](#code-21). 
+
 ## code-1
 ```
 class HelloWorld {
@@ -663,3 +668,6 @@ class HierarchicalInheritance
 }
 ```
 <img width="87" height="56" alt="image" src="https://github.com/user-attachments/assets/51620887-1d27-4ec8-b381-3f12bdbd9877" />
+
+## code-18
+```
