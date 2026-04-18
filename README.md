@@ -19,7 +19,8 @@
 [program-19 WAP to write data into a file using FileOutputStream and read the same file using FileInputStream](#code19)
 [program-20 WAP to copy the contents of one file (source.txt) to another file (dest.txt) using character stream classes (FileReader and FileWriter)](#code-20).
 [program-21 WAP to copy data from one file to another using byte stream classes (FileInputStream and FileOutputStream)](#code-21). 
-
+[program-22 WAP to copy the contents of one file to another file using character stream (FileReader and FileWriter)](#code-22). 
+[program-23 WAP to copy the contents of one file to another file using byte stream (FileInputStream and FileOutputStream).](#code-23).
 ## code-1
 ```
 class HelloWorld {
@@ -671,3 +672,197 @@ class HierarchicalInheritance
 
 ## code-18
 ```
+import java.io.*;
+
+public class CharacterProgram {
+    public static void main(String[] args) {
+        try {
+            // Writing into file
+            FileWriter fw = new FileWriter("charfile.txt");
+            fw.write("Hello Java");
+            fw.close();
+
+            // Reading from file
+            FileReader fr = new FileReader("charfile.txt");
+            int ch;
+
+            System.out.println("File Content:");
+            while ((ch = fr.read()) != -1) {
+                System.out.print((char) ch);
+            }
+
+            fr.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+<img width="679" height="79" alt="image" src="https://github.com/user-attachments/assets/d8c8f963-81bd-449a-95c4-2cfd8fdba49c" />
+
+## code-19
+```
+import java.io.*;
+
+public class ByteProgram {
+    public static void main(String[] args) {
+        try {
+            // Writing into file
+            FileOutputStream fos = new FileOutputStream("bytefile.txt");
+            String data = "Hello";
+            fos.write(data.getBytes());
+            fos.close();
+
+            // Reading from file
+            FileInputStream fis = new FileInputStream("bytefile.txt");
+            int b;
+
+            System.out.println("File Content:");
+            while ((b = fis.read()) != -1) {
+                System.out.print((char) b);
+            }
+
+            fis.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+<img width="699" height="68" alt="image" src="https://github.com/user-attachments/assets/37e1684b-8606-4993-b627-c589f6b5da69" />
+
+## code-20
+```
+import java.io.*;
+
+public class FileCopyCharacter {
+    public static void main(String[] args) {
+        try {
+            // Create source file (optional for testing)
+            FileWriter fw1 = new FileWriter("source.txt");
+            fw1.write("Hello Java Character Copy");
+            fw1.close();
+
+            FileReader fr = new FileReader("source.txt");
+            FileWriter fw = new FileWriter("dest.txt");
+
+            int ch;
+            while ((ch = fr.read()) != -1) {
+                fw.write(ch);
+            }
+
+            fr.close();
+            fw.close();
+
+            System.out.println("Character File Copied Successfully!");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+<img width="690" height="49" alt="image" src="https://github.com/user-attachments/assets/d1aa29c6-9120-4fcf-81be-e3c29446e27f" />
+
+
+## code-21
+```
+import java.io.*;
+
+public class FileCopyByte {
+    public static void main(String[] args) {
+        try {
+            FileOutputStream fos1 = new FileOutputStream("source.txt");
+            String data = "Hello Java Byte Copy";
+            fos1.write(data.getBytes());
+            fos1.close();
+
+            FileInputStream fis = new FileInputStream("source.txt");
+            FileOutputStream fos = new FileOutputStream("dest.txt");
+
+            int b;
+            while ((b = fis.read()) != -1) {
+                fos.write(b);
+            }
+
+            fis.close();
+            fos.close();
+
+            System.out.println("Byte File Copied Successfully!");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+<img width="682" height="53" alt="image" src="https://github.com/user-attachments/assets/11a2cce4-82ba-41b9-9fea-233cf75ea9f7" />
+
+
+## code-22
+```
+import java.io.*;
+
+public class CharFileCopy {
+    public static void main(String[] args) {
+        try {
+            FileWriter test = new FileWriter("source.txt");
+            test.write("Hello Java Character Copy");
+            test.close();
+
+            FileReader fr = new FileReader("source.txt");
+            FileWriter fw = new FileWriter("dest_char.txt");
+
+            int ch;
+            while ((ch = fr.read()) != -1) {
+                fw.write(ch);
+            }
+
+            fr.close();
+            fw.close();
+
+            System.out.println("File copied using character stream");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+<img width="684" height="47" alt="image" src="https://github.com/user-attachments/assets/ebd5c9ab-e805-48b5-b2c1-dad32e8fb461" />
+
+## code-23
+```
+import java.io.*;
+
+public class ByteFileCopy {
+    public static void main(String[] args) {
+        try {
+
+            FileOutputStream test = new FileOutputStream("source.txt");
+            String data = "Hello Java Byte Copy";
+            test.write(data.getBytes());
+            test.close();
+
+            FileInputStream fis = new FileInputStream("source.txt");
+            FileOutputStream fos = new FileOutputStream("dest_byte.txt");
+
+            int b;
+            while ((b = fis.read()) != -1) {
+                fos.write(b);
+            }
+
+            fis.close();
+            fos.close();
+
+            System.out.println("File copied using byte stream");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+<img width="677" height="48" alt="image" src="https://github.com/user-attachments/assets/a6f1ac7e-727b-4c0c-89c7-1c843325721f" />
