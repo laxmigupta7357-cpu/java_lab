@@ -1320,5 +1320,292 @@ public class MatrixAdditionSwing {
 ```
 <img width="358" height="210" alt="image" src="https://github.com/user-attachments/assets/dee42dbf-28e6-4e76-9f3f-885fadc33e2b" />
 
+## code-30
+```
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+class ShapeFrame extends JFrame implements ActionListener {
+
+    String shape = "";
+
+    public ShapeFrame() {
+        setTitle("Shape Drawer");
+
+        // Buttons
+        String names[] = {"Circle","Oval","Rectangle","Square","Line",
+                          "Arc","RoundRect","3DRect","FillOval","FillRect"};
+
+        for(int i=0;i<10;i++) {
+            JButton b = new JButton(names[i]);
+            b.setBounds(20 + (i%5)*100, 20 + (i/5)*50, 90, 30);
+            b.addActionListener(this);
+            add(b);
+        }
+
+        setSize(550,400);
+        setLayout(null);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        shape = e.getActionCommand();
+        repaint(); // redraw
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        // Draw shapes
+        if(shape.equals("Circle"))
+            g.drawOval(200,150,100,100);
+
+        else if(shape.equals("Oval"))
+            g.drawOval(200,150,150,100);
+
+        else if(shape.equals("Rectangle"))
+            g.drawRect(200,150,150,100);
+
+        else if(shape.equals("Square"))
+            g.drawRect(200,150,100,100);
+
+        else if(shape.equals("Line"))
+            g.drawLine(200,150,350,250);
+
+        else if(shape.equals("Arc"))
+            g.drawArc(200,150,150,100,0,180);
+
+        else if(shape.equals("RoundRect"))
+            g.drawRoundRect(200,150,150,100,30,30);
+
+        else if(shape.equals("3DRect"))
+            g.draw3DRect(200,150,150,100,true);
+
+        else if(shape.equals("FillOval"))
+            g.fillOval(200,150,150,100);
+
+        else if(shape.equals("FillRect"))
+            g.fillRect(200,150,150,100);
+    }
+
+    public static void main(String[] args) {
+        new ShapeFrame();
+    }
+}
+```
+<img width="396" height="280" alt="image" src="https://github.com/user-attachments/assets/20719def-227f-48b8-ba51-056dff588f8d" />
+
+## code-31
+```
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class PaintBrush extends JFrame {
+
+    int x1, y1, x2, y2;
+    Color color = Color.BLACK;
+    int width = 2;
+
+    public PaintBrush() {
+        setTitle("Paint Brush");
+
+        // Buttons for colors
+        JButton red = new JButton("Red");
+        JButton blue = new JButton("Blue");
+        JButton green = new JButton("Green");
+
+        // ComboBox for width
+        Integer sizes[] = {2,4,6,8,10};
+        JComboBox cb = new JComboBox(sizes);
+
+        red.setBounds(20,40,70,30);
+        blue.setBounds(100,40,70,30);
+        green.setBounds(180,40,80,30);
+        cb.setBounds(280,40,70,30);
+
+        add(red); add(blue); add(green); add(cb);
+
+        // Color actions
+        red.addActionListener(e -> color = Color.RED);
+        blue.addActionListener(e -> color = Color.BLUE);
+        green.addActionListener(e -> color = Color.GREEN);
+
+        // Width selection
+        cb.addActionListener(e -> width = (int)cb.getSelectedItem());
+
+        // Mouse events
+        addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {
+                x2 = e.getX();
+                y2 = e.getY();
+
+                Graphics g = getGraphics();
+                g.setColor(color);
+                ((Graphics2D)g).setStroke(new BasicStroke(width));
+
+                g.drawLine(x1, y1, x2, y2);
+
+                x1 = x2;
+                y1 = y2;
+            }
+        });
+
+        addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                x1 = e.getX();
+                y1 = e.getY();
+            }
+        });
+
+        setSize(500,400);
+        setLayout(null);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new PaintBrush();
+    }
+}
+```
+<img width="356" height="279" alt="image" src="https://github.com/user-attachments/assets/5e71f920-9dde-476c-87dc-0ae3a1184a43" />
+
+## code-32
+```
+```
+
+## code-33
+```
+```
+## code-34
+```
+public class ExceptionDemo {
+    public static void main(String[] args) {
+
+        // 🔹 Array Exception
+        try {
+            int arr[] = new int[5];
+
+            for(int i = 0; i <= 5; i++) {   // ❌ error (index 5 invalid)
+                arr[i] = i;
+            }
+
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Error: Index out of bounds!");
+        }
+
+        // 🔹 Arithmetic Exception
+        try {
+            int a = 10;
+            int b = 0;
+
+            int result = a / b;   // ❌ divide by zero
+
+        } catch(ArithmeticException e) {
+            System.out.println("Arithmetic Error: Cannot divide by zero!");
+        }
+    }
+}
+```
+<img width="686" height="85" alt="image" src="https://github.com/user-attachments/assets/e2755b17-7688-4fa3-839e-fbf2d0b42540" />
+
+## code-35
+```
+import java.util.*;
+
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String msg) {
+        super(msg);
+    }
+}
+
+public class AgeTest {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter age: ");
+        int age = sc.nextInt();
+
+        try {
+            if(age < 18)
+                throw new InvalidAgeException("Not eligible!");
+            else
+                System.out.println("Eligible");
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+```
+<img width="683" height="56" alt="image" src="https://github.com/user-attachments/assets/f5c791d5-4eec-4a5d-a05b-69095ef2318c" />
+
+## code-36
+```
+// Interface
+interface Shape {
+    void area();
+}
+
+// Abstract Class
+abstract class Vehicle {
+    abstract void start();
+
+    void fuel() {
+        System.out.println("Fuel is required");
+    }
+}
+
+// Parent Class (Inheritance)
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+// Child Class (Inheritance)
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+// Class implementing Interface
+class Circle implements Shape {
+    public void area() {
+        int r = 5;
+        System.out.println("Circle Area = " + (3.14 * r * r));
+    }
+}
+
+// Class extending Abstract Class
+class Car extends Vehicle {
+    void start() {
+        System.out.println("Car starts with key");
+    }
+}
+
+// Main Class
+public class AllInOneDemo {
+    public static void main(String[] args) {
+
+        // 🔹 Inheritance
+        Dog d = new Dog();
+        d.eat();
+        d.bark();
+
+        // 🔹 Interface
+        Shape s = new Circle();
+        s.area();
+
+        // 🔹 Abstract Class
+        Vehicle v = new Car();
+        v.start();
+        v.fuel();
+    }
+}
+```
+<img width="687" height="95" alt="image" src="https://github.com/user-attachments/assets/efa0ae4a-1bfd-4852-b0eb-9402e76c8fa2" />
+
 
 
