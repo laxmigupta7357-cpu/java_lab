@@ -21,6 +21,22 @@
 [program-21 WAP to copy data from one file to another using byte stream classes (FileInputStream and FileOutputStream)](#code-21). 
 [program-22 WAP to copy the contents of one file to another file using character stream (FileReader and FileWriter)](#code-22). 
 [program-23 WAP to copy the contents of one file to another file using byte stream (FileInputStream and FileOutputStream).](#code-23).
+[program-24 WAP using three classes to print 1-100 ,1-100,1-100 with and without thread and analyse the output and repeat the same program using runnable interface.](#code-24).
+[program-25 WAP Using the concept of multithreading the output of all three threads must be synchronised (use join method).](#code-25)
+[program-26 WAP for Addition of 2 numbers using swing..](#code-26).
+[program-27 Make a registration form with 10 elements and send the data into database (use jdbc connectivity).](#code-27).
+[program-28 Make one calculator in swing.](#code-28).
+[program-29 Matrix Addition using swing class.](#code-29).
+[program-30  Create one jframe apply 10 buttons on that after clicking on each button a new structure is created.(Circle, oval rectangle, etc ....) .](#code-30).
+[program-31 Just using mouse Event create a frame like paint brush with selection of colour and width .](#code-31).
+[program-32 Create a package of any 5 classes of your choice and import it.](#code-32).
+[program-33 Create one package and sub package  import and test it .](#code-33).
+[program-34 Create one small array of size 5 apply array out of bounds exception using try catch give a proper message in catch and demonstrate the exception exactly in the same fashion demonstrate arithmetic exception .](#code-34).
+[program-35 To test the range of age of one student.write a program using user defined exception.](#code-35).
+[program-36 Inheritance Programs, using interface and abstract classes..](#code-36).
+
+
+
 ## code-1
 ```
 class HelloWorld {
@@ -866,3 +882,443 @@ public class ByteFileCopy {
 }
 ```
 <img width="677" height="48" alt="image" src="https://github.com/user-attachments/assets/a6f1ac7e-727b-4c0c-89c7-1c843325721f" />
+
+
+## code-24
+```
+class WithoutThread {
+    void print(String name) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(name + ": " + i);
+        }
+    }
+}
+
+// Thread using extends Thread
+class MyThread extends Thread {
+    String name;
+
+    MyThread(String name) {
+        this.name = name;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(name + ": " + i);
+        }
+    }
+}
+
+// Thread using Runnable
+class MyRunnable implements Runnable {
+    String name;
+
+    MyRunnable(String name) {
+        this.name = name;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(name + ": " + i);
+        }
+    }
+}
+
+public class ThreadDemo {
+    public static void main(String[] args) {
+
+        System.out.println("----- WITHOUT THREAD -----");
+        WithoutThread obj = new WithoutThread();
+        obj.print("A");
+        obj.print("B");
+        obj.print("C");
+
+        System.out.println("\n----- WITH THREAD -----");
+        MyThread t1 = new MyThread("A");
+        MyThread t2 = new MyThread("B");
+        MyThread t3 = new MyThread("C");
+
+        t1.start();
+        t2.start();
+        t3.start();
+
+        try { Thread.sleep(1000); } catch(Exception e){}
+
+        System.out.println("\n----- USING RUNNABLE -----");
+        Thread r1 = new Thread(new MyRunnable("A"));
+        Thread r2 = new Thread(new MyRunnable("B"));
+        Thread r3 = new Thread(new MyRunnable("C"));
+
+        r1.start();
+        r2.start();
+        r3.start();
+    }
+}
+```
+<img width="671" height="112" alt="image" src="https://github.com/user-attachments/assets/8d9fed39-3d30-4e6c-a998-b387c4540c72" />
+<img width="142" height="110" alt="image" src="https://github.com/user-attachments/assets/3e5bda2f-2cfa-4bdb-bc80-8cf4c482b333" />
+<img width="173" height="110" alt="image" src="https://github.com/user-attachments/assets/efb87359-64a8-46e4-bd30-1dee291cc034" />
+
+## code-25
+```
+class MyThread extends Thread {
+    String name;
+
+    MyThread(String name) {
+        this.name = name;
+    }
+
+    public void run() {
+        for(int i=1;i<=5;i++) {
+            System.out.println(name + ": " + i);
+        }
+    }
+}
+
+public class Synchronization {
+    public static void main(String[] args) throws Exception {
+        MyThread t1 = new MyThread("A");
+        MyThread t2 = new MyThread("B");
+        MyThread t3 = new MyThread("C");
+
+        t1.start();
+        t1.join();
+
+        t2.start();
+        t2.join();
+
+        t3.start();
+    }
+}
+```
+<img width="685" height="136" alt="image" src="https://github.com/user-attachments/assets/c1bc9918-8afa-4d66-a60f-625c98b7ea1c" />
+
+## code-26
+```
+import javax.swing.*;
+
+public class AddGUI {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Addition");
+
+        JTextField t1 = new JTextField();
+        JTextField t2 = new JTextField();
+        JTextField t3 = new JTextField();
+
+        JButton b = new JButton("Add");
+
+        t1.setBounds(50,50,100,30);
+        t2.setBounds(50,100,100,30);
+        t3.setBounds(50,150,100,30);
+        b.setBounds(50,200,100,30);
+
+        f.add(t1); f.add(t2); f.add(t3); f.add(b);
+
+        b.addActionListener(e -> {
+            int a = Integer.parseInt(t1.getText());
+            int c = Integer.parseInt(t2.getText());
+            t3.setText(String.valueOf(a+c));
+        });
+
+        f.setSize(300,300);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+```
+<img width="209" height="218" alt="image" src="https://github.com/user-attachments/assets/9f7e85f1-f9af-4487-890c-e1c11dac9438" />
+
+## code-27
+```
+import javax.swing.*;
+import java.awt.event.*;
+
+public class RegisterForm {
+    public static void main(String[] args) {
+
+        JFrame f = new JFrame("Registration Form");
+
+        // Labels
+        JLabel l1 = new JLabel("Name:");
+        JLabel l2 = new JLabel("Email:");
+        JLabel l3 = new JLabel("Password:");
+        JLabel l4 = new JLabel("Gender:");
+        JLabel l5 = new JLabel("DOB:");
+        JLabel l6 = new JLabel("Phone:");
+        JLabel l7 = new JLabel("Address:");
+        JLabel l8 = new JLabel("Course:");
+        JLabel l9 = new JLabel("Hobbies:");
+        JLabel l10 = new JLabel("Country:");
+
+        // TextFields
+        JTextField t1 = new JTextField();
+        JTextField t2 = new JTextField();
+        JPasswordField t3 = new JPasswordField();
+        JTextField t5 = new JTextField();
+        JTextField t6 = new JTextField();
+        JTextField t7 = new JTextField();
+
+        // Radio Buttons (Gender)
+        JRadioButton r1 = new JRadioButton("Male");
+        JRadioButton r2 = new JRadioButton("Female");
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(r1); bg.add(r2);
+
+        // ComboBox (Course)
+        String courses[] = {"B.Tech","BCA","MCA","MBA"};
+        JComboBox c1 = new JComboBox(courses);
+
+        // CheckBoxes (Hobbies)
+        JCheckBox h1 = new JCheckBox("Reading");
+        JCheckBox h2 = new JCheckBox("Music");
+        JCheckBox h3 = new JCheckBox("Sports");
+
+        // Country ComboBox
+        String country[] = {"India","USA","UK","Canada"};
+        JComboBox c2 = new JComboBox(country);
+
+        // Button
+        JButton b = new JButton("Submit");
+
+        // Set Bounds
+        l1.setBounds(50,30,100,30);   t1.setBounds(150,30,150,30);
+        l2.setBounds(50,70,100,30);   t2.setBounds(150,70,150,30);
+        l3.setBounds(50,110,100,30);  t3.setBounds(150,110,150,30);
+        l4.setBounds(50,150,100,30);  r1.setBounds(150,150,70,30); r2.setBounds(220,150,80,30);
+        l5.setBounds(50,190,100,30);  t5.setBounds(150,190,150,30);
+        l6.setBounds(50,230,100,30);  t6.setBounds(150,230,150,30);
+        l7.setBounds(50,270,100,30);  t7.setBounds(150,270,150,30);
+        l8.setBounds(50,310,100,30);  c1.setBounds(150,310,150,30);
+        l9.setBounds(50,350,100,30);  h1.setBounds(150,350,80,30); h2.setBounds(230,350,80,30); h3.setBounds(310,350,80,30);
+        l10.setBounds(50,390,100,30); c2.setBounds(150,390,150,30);
+
+        b.setBounds(150,440,100,30);
+
+        // Add components
+        f.add(l1); f.add(t1);
+        f.add(l2); f.add(t2);
+        f.add(l3); f.add(t3);
+        f.add(l4); f.add(r1); f.add(r2);
+        f.add(l5); f.add(t5);
+        f.add(l6); f.add(t6);
+        f.add(l7); f.add(t7);
+        f.add(l8); f.add(c1);
+        f.add(l9); f.add(h1); f.add(h2); f.add(h3);
+        f.add(l10); f.add(c2);
+        f.add(b);
+
+        // Button Action
+        b.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(f, "Registration Successful");
+            }
+        });
+
+        f.setSize(450,550);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+```
+<img width="326" height="401" alt="image" src="https://github.com/user-attachments/assets/f5135b5b-de5b-4c07-97c5-d4486cd9f2da" />
+<img width="197" height="92" alt="image" src="https://github.com/user-attachments/assets/fb10be2a-7d20-4590-9b2c-3c489395b2c2" />
+
+## code-28
+```
+import javax.swing.*;
+
+public class CalculatorSwing {
+    public static void main(String[] args) {
+
+        JFrame f = new JFrame("Calculator");
+
+        JTextField t = new JTextField();
+        t.setBounds(30,30,240,30);
+
+        // Buttons
+        JButton b1 = new JButton("1");
+        JButton b2 = new JButton("2");
+        JButton b3 = new JButton("3");
+        JButton b4 = new JButton("+");
+
+        JButton b5 = new JButton("4");
+        JButton b6 = new JButton("5");
+        JButton b7 = new JButton("6");
+        JButton b8 = new JButton("-");
+
+        JButton b9 = new JButton("7");
+        JButton b10 = new JButton("8");
+        JButton b11 = new JButton("9");
+        JButton b12 = new JButton("*");
+
+        JButton b13 = new JButton("0");
+        JButton b14 = new JButton("C");
+        JButton b15 = new JButton("=");
+        JButton b16 = new JButton("/");
+
+        // Set positions
+        b1.setBounds(30,80,50,40);
+        b2.setBounds(90,80,50,40);
+        b3.setBounds(150,80,50,40);
+        b4.setBounds(210,80,50,40);
+
+        b5.setBounds(30,130,50,40);
+        b6.setBounds(90,130,50,40);
+        b7.setBounds(150,130,50,40);
+        b8.setBounds(210,130,50,40);
+
+        b9.setBounds(30,180,50,40);
+        b10.setBounds(90,180,50,40);
+        b11.setBounds(150,180,50,40);
+        b12.setBounds(210,180,50,40);
+
+        b13.setBounds(30,230,50,40);
+        b14.setBounds(90,230,50,40);
+        b15.setBounds(150,230,50,40);
+        b16.setBounds(210,230,50,40);
+
+        // Add components
+        f.add(t);
+        f.add(b1); f.add(b2); f.add(b3); f.add(b4);
+        f.add(b5); f.add(b6); f.add(b7); f.add(b8);
+        f.add(b9); f.add(b10); f.add(b11); f.add(b12);
+        f.add(b13); f.add(b14); f.add(b15); f.add(b16);
+
+        // Variables
+        final int[] num1 = new int[1];
+        final int[] num2 = new int[1];
+        final char[] op = new char[1];
+
+        // Number buttons
+        b1.addActionListener(e -> t.setText(t.getText() + "1"));
+        b2.addActionListener(e -> t.setText(t.getText() + "2"));
+        b3.addActionListener(e -> t.setText(t.getText() + "3"));
+        b5.addActionListener(e -> t.setText(t.getText() + "4"));
+        b6.addActionListener(e -> t.setText(t.getText() + "5"));
+        b7.addActionListener(e -> t.setText(t.getText() + "6"));
+        b9.addActionListener(e -> t.setText(t.getText() + "7"));
+        b10.addActionListener(e -> t.setText(t.getText() + "8"));
+        b11.addActionListener(e -> t.setText(t.getText() + "9"));
+        b13.addActionListener(e -> t.setText(t.getText() + "0"));
+
+        // Operators
+        b4.addActionListener(e -> { num1[0] = Integer.parseInt(t.getText()); op[0] = '+'; t.setText(""); });
+        b8.addActionListener(e -> { num1[0] = Integer.parseInt(t.getText()); op[0] = '-'; t.setText(""); });
+        b12.addActionListener(e -> { num1[0] = Integer.parseInt(t.getText()); op[0] = '*'; t.setText(""); });
+        b16.addActionListener(e -> { num1[0] = Integer.parseInt(t.getText()); op[0] = '/'; t.setText(""); });
+
+        // Equal
+        b15.addActionListener(e -> {
+            num2[0] = Integer.parseInt(t.getText());
+            int result = 0;
+
+            switch(op[0]) {
+                case '+': result = num1[0] + num2[0]; break;
+                case '-': result = num1[0] - num2[0]; break;
+                case '*': result = num1[0] * num2[0]; break;
+                case '/': result = num1[0] / num2[0]; break;
+            }
+
+            t.setText(String.valueOf(result));
+        });
+
+        // Clear
+        b14.addActionListener(e -> t.setText(""));
+
+        // Frame settings
+        f.setSize(320,350);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+```
+<img width="224" height="250" alt="image" src="https://github.com/user-attachments/assets/a43f2772-1719-4ab9-88df-665f25b65e1f" />
+
+## code-29
+```
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MatrixAdditionSwing {
+
+    public static void main(String[] args) {
+
+        JFrame f = new JFrame("Matrix Addition");
+
+        // Matrix A fields
+        JTextField a11 = new JTextField();
+        JTextField a12 = new JTextField();
+        JTextField a21 = new JTextField();
+        JTextField a22 = new JTextField();
+
+        // Matrix B fields
+        JTextField b11 = new JTextField();
+        JTextField b12 = new JTextField();
+        JTextField b21 = new JTextField();
+        JTextField b22 = new JTextField();
+
+        // Result fields
+        JTextField r11 = new JTextField();
+        JTextField r12 = new JTextField();
+        JTextField r21 = new JTextField();
+        JTextField r22 = new JTextField();
+
+        JButton addBtn = new JButton("Add");
+
+        // Set bounds (Matrix A)
+        a11.setBounds(50,50,40,30);
+        a12.setBounds(100,50,40,30);
+        a21.setBounds(50,90,40,30);
+        a22.setBounds(100,90,40,30);
+
+        // Matrix B
+        b11.setBounds(200,50,40,30);
+        b12.setBounds(250,50,40,30);
+        b21.setBounds(200,90,40,30);
+        b22.setBounds(250,90,40,30);
+
+        // Result Matrix
+        r11.setBounds(350,50,40,30);
+        r12.setBounds(400,50,40,30);
+        r21.setBounds(350,90,40,30);
+        r22.setBounds(400,90,40,30);
+
+        // Button
+        addBtn.setBounds(200,150,80,30);
+
+        // Add components
+        f.add(a11); f.add(a12); f.add(a21); f.add(a22);
+        f.add(b11); f.add(b12); f.add(b21); f.add(b22);
+        f.add(r11); f.add(r12); f.add(r21); f.add(r22);
+        f.add(addBtn);
+
+        // Button action
+        addBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int A11 = Integer.parseInt(a11.getText());
+                int A12 = Integer.parseInt(a12.getText());
+                int A21 = Integer.parseInt(a21.getText());
+                int A22 = Integer.parseInt(a22.getText());
+
+                int B11 = Integer.parseInt(b11.getText());
+                int B12 = Integer.parseInt(b12.getText());
+                int B21 = Integer.parseInt(b21.getText());
+                int B22 = Integer.parseInt(b22.getText());
+
+                r11.setText(""+(A11+B11));
+                r12.setText(""+(A12+B12));
+                r21.setText(""+(A21+B21));
+                r22.setText(""+(A22+B22));
+            }
+        });
+
+        f.setSize(500,300);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+```
+<img width="358" height="210" alt="image" src="https://github.com/user-attachments/assets/dee42dbf-28e6-4e76-9f3f-885fadc33e2b" />
+
+
+
