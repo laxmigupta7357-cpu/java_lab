@@ -1473,11 +1473,43 @@ public class PaintBrush extends JFrame {
 
 ## code-32
 ```
+import mypack.*;
+public class TestPackage {
+    public static void main(String[] args) {
+        Add1 a = new Add1();
+        Sub s = new Sub();
+        Mul m = new Mul();
+        Div d = new Div();
+        Square sq = new Square();
+        System.out.println("Addition: " + a.add(10,5));
+        System.out.println("Subtraction: " + s.sub(10,5));
+        System.out.println("Multiplication: " + m.mul(10,5));
+        System.out.println("Division: " + d.div(10,5));
+        System.out.println("Square: " + sq.square(5));
+    }
+}
 ```
+<img width="108" height="66" alt="image" src="https://github.com/user-attachments/assets/b8dadf9e-b96d-40b6-a6a5-9939532b60f9" />
+
 
 ## code-33
 ```
+import mypack.Add1;
+import mypack.subpack.Square2;
+
+public class TestPackage2 {
+    public static void main(String[] args) {
+
+        Add1 a = new Add1();
+        Square2 s = new Square2();
+
+        System.out.println("Addition: " + a.add(10,5));
+        System.out.println("Square: " + s.square(5));
+    }
+}
 ```
+<img width="81" height="25" alt="image" src="https://github.com/user-attachments/assets/5e2f63d9-d44a-450f-a1f4-e89bcddd0329" />
+
 ## code-34
 ```
 public class ExceptionDemo {
